@@ -1,0 +1,51 @@
+version: "3.7"
+
+services:
+
+  #  databases
+  sandbox-db:
+    container_name: sandbox-db
+    image: postgres:14-alpine
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data/sandbox-db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+  #backends
+  backend:
+    container_name:   backend
+    image: ghcr.io/onlinesandbox/backend:main
+    restart: always
+    pull_policy: always
+    expose:
+      - "80"
+    depends_on:
+      - sandbox-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+  #frontends
+  frontend:
+    container_name: frontend
+    image: ghcr.io/onlinesandbox/frontend:main
+    pull_policy: always
+    restart: always
+    expose:
+      - "80"
+
+  # reverse-proxy
+  reverse-proxy:
+    container_name: reverse-proxy
+    image: nginx
+    restart: always
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ./.nginx/compose/nginx-dev.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "80:80"
