@@ -18,7 +18,7 @@ services:
   #backends
   backend:
     container_name:   backend
-    image: ghcr.io/onlinesandbox/backend:main
+    image: ghcr.io/onlinesandbox/spring-boot-backend:main
     restart: always
     pull_policy: always
     expose:
@@ -32,7 +32,7 @@ services:
   #frontends
   frontend:
     container_name: frontend
-    image: ghcr.io/onlinesandbox/frontend:main
+    image: ghcr.io/onlinesandbox/vue-frontend:main
     pull_policy: always
     restart: always
     expose:
