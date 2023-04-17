@@ -28,6 +28,7 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+      - POSTGRES_URL=postgresql://sandbox-db:5432/postgres
 
   #frontends
   frontend:
