@@ -24,6 +24,16 @@ export default {
                 alert("Glückwunsch: " + response);
             }).catch(error => {
                 alert("Fehler: " + error);
+                alert("try 8080: ");
+                axios.post('http://localhost/api/test', {
+                    data: {
+                        // Hier können Sie die Daten einfügen, die an das Backend gesendet werden sollen
+                    }
+                }).then(response => {
+                    alert("Glückwunsch: " + response);
+                }).catch(error => {
+                    alert("Fehler: " + error);
+                })
             })
         },
     }
