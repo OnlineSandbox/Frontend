@@ -16,7 +16,7 @@ export default {
   },
     methods: {
         sendData() {
-            axios.post('http://backend/api/test', {
+            axios.post('http://sandbox-online.westeurope.cloudapp.azure.com/api/test', {
                 data: {
                     // Hier können Sie die Daten einfügen, die an das Backend gesendet werden sollen
                 }
