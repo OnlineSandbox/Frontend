@@ -16,7 +16,7 @@ export default {
   },
     methods: {
         sendData() {
-            axios.post('http://localhost/api/test', {
+            axios.post('http://backend/api/test', {
                 data: {
                     // Hier können Sie die Daten einfügen, die an das Backend gesendet werden sollen
                 }
