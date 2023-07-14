@@ -1,49 +1,52 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-      <div id="test">
-        <button @click="sendData">Daten senden</button>
-      </div>
-  </div>
+    <div class="hello">
+        <div id="test">
+            <button id="counter-button" @click="increaseCounter()">Counter up</button>
+        </div>
+        <div v-if="counter!=0">
+            DU HAST DEN {{ counter }}.TEN KLICK GEMACHT SEIT DEM LETZTEN NEUSTART. GRATULATION!
+        </div>
+
+    </div>
 </template>
 
 <script>
 import axios from 'axios'
+
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  },
+    data() {
+        return {
+            counter: 0
+        }
+    },
     methods: {
-        sendData() {
-            axios.post('http://sandbox-online.westeurope.cloudapp.azure.com/api/test', {
-                data: {
-                    // Hier können Sie die Daten einfügen, die an das Backend gesendet werden sollen
-                }
-            }).then(response => {
-                alert("Glückwunsch: " + response);
-            }).catch(error => {
-                alert("Fehler: " + error);
-            })
-        },
+        increaseCounter() {
+            axios.post('http://sandbox-online.westeurope.cloudapp.azure.com/api/counter')
+                .then(response => {
+                    this.counter = response.data.counterValue;
+                    console.log(response);
+                })
+                .catch(error => {
+                    alert("Fehler: " + error);
+                })
+        }
     }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {
-  margin: 40px 0 0;
+    margin: 40px 0 0;
 }
 ul {
-  list-style-type: none;
-  padding: 0;
+    list-style-type: none;
+    padding: 0;
 }
 li {
-  display: inline-block;
-  margin: 0 10px;
+    display: inline-block;
+    margin: 0 10px;
 }
 a {
-  color: #42b983;
+    color: #42b983;
 }
 </style>
