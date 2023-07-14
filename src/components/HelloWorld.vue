@@ -3,7 +3,7 @@
         <div id="test">
             <button id="counter-button" @click="increaseCounter()">Counter up</button>
         </div>
-        <div v-if="counter!=0">
+        <div v-if="counter!==0">
             DU HAST DEN {{ counter }}.TEN KLICK GEMACHT SEIT DEM LETZTEN NEUSTART. GRATULATION!
         </div>
 
