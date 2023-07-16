@@ -1,12 +1,8 @@
 <template>
     <div class="hello">
-        <div id="test">
-            <button id="counter-button" @click="increaseCounter()">Counter up</button>
-        </div>
         <div>
             Dank dir wurde die Seite zum {{counter}}.ten mal neu geladen seit dem letzten Neustart!
         </div>
-
     </div>
 </template>
 
