@@ -1,7 +1,7 @@
 <template>
     <div class="hello">
         <div>
-            Dank dir wurde die Seite zum {{counter}}.ten mal neu geladen seit dem letzten Neustart!
+            Dank dir wurde die Website zum {{counter}}.ten mal neu geladen seit dem letzten DB Reset!
         </div>
     </div>
 </template>
@@ -20,7 +20,6 @@ export default {
             axios.post('http://sandbox-online.westeurope.cloudapp.azure.com/api/counter')
                 .then(response => {
                     this.counter = response.data.counterValue;
-                    console.log(response);
                 })
                 .catch(error => {
                     alert("Fehler: " + error);
