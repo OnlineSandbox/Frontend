@@ -17,7 +17,7 @@ export default {
     },
     methods: {
         increaseCounter() {
-            axios.post('http://sandbox-online.westeurope.cloudapp.azure.com/api/counter')
+            axios.post('http://20.52.160.67/api/counter')
                 .then(response => {
                     this.counter = response.data.counterValue;
                 })
